@@ -1,59 +1,99 @@
-Feature Selection 
-=================
+Original data sets come from the accelerometer and gyroscope 3-axial raw signals tAcc-XYZ and tGyro-XYZ. These time domain signals were captured at a constant rate of 50 Hz. Then they were filtered using a median filter and a 3rd order low pass Butterworth filter with a corner frequency of 20 Hz to remove noise. Similarly, the acceleration signal was then separated into body and gravity acceleration signals using another low pass Butterworth filter with a corner frequency of 0.3 Hz. 
 
-The features selected for this database come from the accelerometer and gyroscope 3-axial raw signals tAcc-XYZ and tGyro-XYZ. These time domain signals (prefix 't' to denote time) were captured at a constant rate of 50 Hz. Then they were filtered using a median filter and a 3rd order low pass Butterworth filter with a corner frequency of 20 Hz to remove noise. Similarly, the acceleration signal was then separated into body and gravity acceleration signals (tBodyAcc-XYZ and tGravityAcc-XYZ) using another low pass Butterworth filter with a corner frequency of 0.3 Hz. 
+Subsequently, the body linear acceleration and angular velocity were derived in time to obtain Jerk signals. Also the magnitude of these three-dimensional signals were calculated using the Euclidean norm. 
 
-Subsequently, the body linear acceleration and angular velocity were derived in time to obtain Jerk signals (tBodyAccJerk-XYZ and tBodyGyroJerk-XYZ). Also the magnitude of these three-dimensional signals were calculated using the Euclidean norm (tBodyAccMag, tGravityAccMag, tBodyAccJerkMag, tBodyGyroMag, tBodyGyroJerkMag). 
+Finally a Fast Fourier Transform (FFT) was applied to some of these signals producing FrequencyDomain variables. 
 
-Finally a Fast Fourier Transform (FFT) was applied to some of these signals producing fBodyAcc-XYZ, fBodyAccJerk-XYZ, fBodyGyro-XYZ, fBodyAccJerkMag, fBodyGyroMag, fBodyGyroJerkMag. (Note the 'f' to indicate frequency domain signals). 
+This large data set was used to:
 
-These signals were used to estimate variables of the feature vector for each pattern:  
+1. extract just values for mean and standard deviation of all variables
+2. change variable names into more understandable 
+3. calculate average values for each subject for each activity.
+
+There were all together 30 subjects (from test and training sets).
+Six (6) different activities were measured: walking, walking upstairs, walking downstairs,sitting, standing and laying
+
+New table called tidy.data consists of 81 variable. Each variable is in columns. It starts with subject, activity and that is followed by variables listed below.
+
 '-XYZ' is used to denote 3-axial signals in the X, Y and Z directions.
 
-tBodyAcc-XYZ
-tGravityAcc-XYZ
-tBodyAccJerk-XYZ
-tBodyGyro-XYZ
-tBodyGyroJerk-XYZ
-tBodyAccMag
-tGravityAccMag
-tBodyAccJerkMag
-tBodyGyroMag
-tBodyGyroJerkMag
-fBodyAcc-XYZ
-fBodyAccJerk-XYZ
-fBodyGyro-XYZ
-fBodyAccMag
-fBodyAccJerkMag
-fBodyGyroMag
-fBodyGyroJerkMag
 
-The set of variables that were estimated from these signals are: 
-
-mean(): Mean value
-std(): Standard deviation
-mad(): Median absolute deviation 
-max(): Largest value in array
-min(): Smallest value in array
-sma(): Signal magnitude area
-energy(): Energy measure. Sum of the squares divided by the number of values. 
-iqr(): Interquartile range 
-entropy(): Signal entropy
-arCoeff(): Autorregresion coefficients with Burg order equal to 4
-correlation(): correlation coefficient between two signals
-maxInds(): index of the frequency component with largest magnitude
-meanFreq(): Weighted average of the frequency components to obtain a mean frequency
-skewness(): skewness of the frequency domain signal 
-kurtosis(): kurtosis of the frequency domain signal 
-bandsEnergy(): Energy of a frequency interval within the 64 bins of the FFT of each window.
-angle(): Angle between to vectors.
-
-Additional vectors obtained by averaging the signals in a signal window sample. These are used on the angle() variable:
-
-gravityMean
-tBodyAccMean
-tBodyAccJerkMean
-tBodyGyroMean
-tBodyGyroJerkMean
-
-The complete list of variables of each feature vector is available in 'features.txt'
+"TimeDomain.BodyAcceleration.Mean.X"
+"TimeDomain.BodyAcceleration.Mean.Y"
+"TimeDomain.BodyAcceleration.Mean.Z" 
+"TimeDomain.BodyAcceleration.StandardDeviation.X" 
+"TimeDomain.BodyAcceleration.StandardDeviation.Y" 
+"TimeDomain.BodyAcceleration.StandardDeviation.Z" 
+"TimeDomain.GravityAcceleration.Mean.X" 
+"TimeDomain.GravityAcceleration.Mean.Y" 
+"TimeDomain.GravityAcceleration.Mean.Z" 
+"TimeDomain.GravityAcceleration.StandardDeviation.X" 
+"TimeDomain.GravityAcceleration.StandardDeviation.Y" 
+"TimeDomain.GravityAcceleration.StandardDeviation.Z" 
+"TimeDomain.BodyAccelerationJerk.Mean.X" 
+"TimeDomain.BodyAccelerationJerk.Mean.Y" 
+"TimeDomain.BodyAccelerationJerk.Mean.Z" 
+"TimeDomain.BodyAccelerationJerk.StandardDeviation.X" 
+"TimeDomain.BodyAccelerationJerk.StandardDeviation.Y" 
+"TimeDomain.BodyAccelerationJerk.StandardDeviation.Z" 
+"TimeDomain.BodyAngularSpeed.Mean.X" 
+"TimeDomain.BodyAngularSpeed.Mean.Y" 
+"TimeDomain.BodyAngularSpeed.Mean.Z" 
+"TimeDomain.BodyAngularSpeed.StandardDeviation.X" 
+"TimeDomain.BodyAngularSpeed.StandardDeviation.Y" 
+"TimeDomain.BodyAngularSpeed.StandardDeviation.Z" 
+"TimeDomain.BodyAngularAcceleration.Mean.X" 
+"TimeDomain.BodyAngularAcceleration.Mean.Y" 
+"TimeDomain.BodyAngularAcceleration.Mean.Z" 
+"TimeDomain.BodyAngularAcceleration.StandardDeviation.X" 
+"TimeDomain.BodyAngularAcceleration.StandardDeviation.Y" 
+"TimeDomain.BodyAngularAcceleration.StandardDeviation.Z" 
+"TimeDomain.BodyAccelerationMagnitude.Mean" 
+"TimeDomain.BodyAccelerationMagnitude.StandardDeviation" 
+"TimeDomain.GravityAccelerationMagnitude.Mean" 
+"TimeDomain.GravityAccelerationMagnitude.StandardDeviation" 
+"TimeDomain.BodyAccelerationJerkMagnitude.Mean" 
+"TimeDomain.BodyAccelerationJerkMagnitude.StandardDeviation" 
+"TimeDomain.BodyAngularSpeedMagnitude.Mean" 
+"TimeDomain.BodyAngularSpeedMagnitude.StandardDeviation" 
+"TimeDomain.BodyAngularAccelerationMagnitude.Mean" 
+"TimeDomain.BodyAngularAccelerationMagnitude.StandardDeviation" 
+"FrequencyDomain.BodyAcceleration.Mean.X" 
+"FrequencyDomain.BodyAcceleration.Mean.Y" 
+"FrequencyDomain.BodyAcceleration.Mean.Z" 
+"FrequencyDomain.BodyAcceleration.StandardDeviation.X" 
+"FrequencyDomain.BodyAcceleration.StandardDeviation.Y" 
+"FrequencyDomain.BodyAcceleration.StandardDeviation.Z" 
+"FrequencyDomain.BodyAcceleration.MeanFrequency.X" 
+"FrequencyDomain.BodyAcceleration.MeanFrequency.Y" 
+"FrequencyDomain.BodyAcceleration.MeanFrequency.Z" 
+"FrequencyDomain.BodyAccelerationJerk.Mean.X" 
+"FrequencyDomain.BodyAccelerationJerk.Mean.Y" 
+"FrequencyDomain.BodyAccelerationJerk.Mean.Z" 
+"FrequencyDomain.BodyAccelerationJerk.StandardDeviation.X" 
+"FrequencyDomain.BodyAccelerationJerk.StandardDeviation.Y" 
+"FrequencyDomain.BodyAccelerationJerk.StandardDeviation.Z" 
+"FrequencyDomain.BodyAccelerationJerk.MeanFrequency.X" 
+"FrequencyDomain.BodyAccelerationJerk.MeanFrequency.Y" 
+"FrequencyDomain.BodyAccelerationJerk.MeanFrequency.Z" 
+"FrequencyDomain.BodyAngularSpeed.Mean.X" 
+"FrequencyDomain.BodyAngularSpeed.Mean.Y" 
+"FrequencyDomain.BodyAngularSpeed.Mean.Z" 
+"FrequencyDomain.BodyAngularSpeed.StandardDeviation.X" 
+"FrequencyDomain.BodyAngularSpeed.StandardDeviation.Y" 
+"FrequencyDomain.BodyAngularSpeed.StandardDeviation.Z" 
+"FrequencyDomain.BodyAngularSpeed.MeanFrequency.X" 
+"FrequencyDomain.BodyAngularSpeed.MeanFrequency.Y" 
+"FrequencyDomain.BodyAngularSpeed.MeanFrequency.Z" 
+"FrequencyDomain.BodyAccelerationMagnitude.Mean" 
+"FrequencyDomain.BodyAccelerationMagnitude.StandardDeviation" 
+"FrequencyDomain.BodyAccelerationMagnitude.MeanFrequency" 
+"FrequencyDomain.BodyBodyAccelerationJerkMagnitude.Mean" 
+"FrequencyDomain.BodyBodyAccelerationJerkMagnitude.StandardDeviation" 
+"FrequencyDomain.BodyBodyAccelerationJerkMagnitude.MeanFrequency" 
+"FrequencyDomain.BodyBodyAngularSpeedMagnitude.Mean" 
+"FrequencyDomain.BodyBodyAngularSpeedMagnitude.StandardDeviation" 
+"FrequencyDomain.BodyBodyAngularSpeedMagnitude.MeanFrequency" 
+"FrequencyDomain.BodyBodyAngularAccelerationMagnitude.Mean" 
+"FrequencyDomain.BodyBodyAngularAccelerationMagnitude.StandardDeviation" 
+"FrequencyDomain.BodyBodyAngularAccelerationMagnitude.MeanFrequency"
